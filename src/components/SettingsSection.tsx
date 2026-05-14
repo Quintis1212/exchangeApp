@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { View } from 'react-native';
 import { spacing } from '../theme/theme';
-import { SectionLabel, SurfaceCard } from '../ui/primitives';
+import { SectionLabel, BaseCard } from '../ui/primitives';
 
 type Props = {
   label: string;
@@ -18,7 +18,7 @@ export default function SettingsSection({ label, children }: Props) {
       }}
     >
       <SectionLabel>{label}</SectionLabel>
-      <SurfaceCard>{children}</SurfaceCard>
+      <BaseCard>{children}</BaseCard>
     </View>
   );
 }
