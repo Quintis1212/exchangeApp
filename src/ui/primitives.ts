@@ -60,7 +60,7 @@ export const Divider = styled.View`
   margin: 0 ${spacing.base}px;
 `;
 
-export const SurfaceCard = styled.View`
+export const BaseCard = styled.View`
   background-color: ${colors.surface};
   border-radius: ${radius.md}px;
   border-width: 1px;
@@ -68,7 +68,7 @@ export const SurfaceCard = styled.View`
   overflow: hidden;
 `;
 
-export const ListCard = styled(SurfaceCard)`
+export const ListCard = styled(BaseCard)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +76,7 @@ export const ListCard = styled(SurfaceCard)`
   margin: 5px ${spacing.base}px;
 `;
 
-export const InputCard = styled(SurfaceCard)`
+export const InputCard = styled(BaseCard)`
   flex-direction: row;
   align-items: center;
   padding: 0 ${spacing.base}px;
