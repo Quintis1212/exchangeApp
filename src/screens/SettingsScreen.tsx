@@ -1,0 +1,52 @@
+import { Fragment, useState } from "react";
+import { ratesWithCZK } from "../api/cnb";
+import CurrencyPickerModal from "../components/CurrencyPickerModal";
+import SettingsRow from "../components/SettingsRow";
+import SettingsSection from "../components/SettingsSection";
+import { INFO_ROWS } from "../constants";
+import { useBase } from "../context/BaseCurrencyContext";
+import { useCNBRates } from "../hooks/useCNBQueries";
+import {
+  AccentText,
+  Pill,
+  PillText,
+  ScrollContainer
+} from "../ui/primitives";
+
+export default function SettingsScreen() {
+  const { base, setBase } = useBase();
+  const { data } = useCNBRates();
+  const [pickerVisible, setPickerVisible] = useState(false);
+
+  return (
+    <ScrollContainer>
+      <SettingsSection label="Base Currency">
+        <SettingsRow label="Compare rates against">
+          <Pill onPress={() => setPickerVisible(true)}>
+            <PillText>{base.code} ▾</PillText>
+          </Pill>
+        </SettingsRow>
+      </SettingsSection>
+
+      <SettingsSection label="About">
+        {INFO_ROWS.map((row, i) => (
+          <Fragment key={row.label}>
+            <SettingsRow label={row.label}>
+              <AccentText>{row.value}</AccentText>
+            </SettingsRow>
+          </Fragment>
+        ))}
+      </SettingsSection>
+
+      {data && (
+        <CurrencyPickerModal
+          visible={pickerVisible}
+          rates={ratesWithCZK(data)}
+          selected={base}
+          onSelect={setBase}
+          onClose={() => setPickerVisible(false)}
+        />
+      )}
+    </ScrollContainer>
+  );
+}
