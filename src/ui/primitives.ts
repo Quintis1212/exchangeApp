@@ -180,7 +180,7 @@ export const Pill = styled.TouchableOpacity`
   border-color: ${colors.primary};
 `;
 
-export const PillText = styled.Text`
+export const Text = styled.Text`
   font-size: ${fontSizes.caption}px;
   font-weight: ${fontWeights.bold};
   color: ${colors.primary};
