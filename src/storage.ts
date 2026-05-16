@@ -1,6 +1,7 @@
 import { createMMKV } from "react-native-mmkv";
+import { StateStorage } from "zustand/middleware";
 
-const storage = createMMKV();
+export const storage = createMMKV();
 
 export const getJSON = <T>(key: string): T | null => {
   const raw = storage.getString(key);
@@ -19,4 +20,14 @@ export const setJSON = (key: string, value: unknown): void => {
 
 export const removeKey = (key: string): void => {
   storage.remove(key);
+};
+
+export const mmkvStorage: StateStorage = {
+  getItem: (name) => storage.getString(name) ?? null,
+  setItem: (name, value) => {
+    storage.set(name, value);
+  },
+  removeItem: (name) => {
+    storage.remove(name);
+  },
 };

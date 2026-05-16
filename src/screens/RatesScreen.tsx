@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { FlatList, ListRenderItem } from "react-native";
 import { ratesWithCZK } from "../api/cnb";
-import CurrencyPickerModal from "../components/CurrencyPickerModal";
+import CurrencyPicker from "../components/CurrencyPicker";
 import RateListItem from "../components/RateListItem";
 import { useBase } from "../context/BaseCurrencyContext";
 import { useCNBRates } from "../hooks/useCNBQueries";
 import { useRatesRows } from "../hooks/useRatesRows";
-import { RateRow } from "../types";
 import { fontSizes } from "../theme/theme";
+import { RateRow } from "../types";
 import { ErrorScreen } from "../ui/ErrorScreen";
 import { LoadingScreen } from "../ui/LoadingScreen";
 import {
-  Pill,
-  PillText,
   ScreenContainer,
   SearchBar,
   SecondaryText,
@@ -28,7 +26,6 @@ const renderItem: ListRenderItem<RateRow> = ({ item }) => (
 export default function RatesScreen() {
   const { data, isLoading, isError } = useCNBRates();
   const { base, setBase } = useBase();
-  const [pickerVisible, setPickerVisible] = useState(false);
   const [query, setQuery] = useState("");
 
   const rows = useRatesRows(data, base, query);
@@ -45,9 +42,12 @@ export default function RatesScreen() {
         <SecondaryText style={{ flex: 1, fontSize: fontSizes.sm }}>
           ČNB · {data.date}
         </SecondaryText>
-        <Pill onPress={() => setPickerVisible(true)}>
-          <PillText>Base: {base.code} ▾</PillText>
-        </Pill>
+        <CurrencyPicker
+          selected={base}
+          rates={ratesWithCZK(data)}
+          onSelect={setBase}
+          prefix="Base"
+        />
       </Toolbar>
 
       <SearchBar
@@ -63,14 +63,6 @@ export default function RatesScreen() {
         renderItem={renderItem}
         initialNumToRender={12}
         maxToRenderPerBatch={10}
-      />
-
-      <CurrencyPickerModal
-        visible={pickerVisible}
-        rates={ratesWithCZK(data)}
-        selected={base}
-        onSelect={setBase}
-        onClose={() => setPickerVisible(false)}
       />
     </ScreenContainer>
   );
