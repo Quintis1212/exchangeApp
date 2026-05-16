@@ -1,8 +1,14 @@
-import styled from 'styled-components/native';
-import { DIALOG_BUTTON_VARIANTS } from '../constants';
-import { colors, fontSizes, fontWeights, radius, spacing } from '../theme/theme';
-import { ButtonVariant, FlexDirection } from '../types';
-import { BaseCard } from '../ui/primitives';
+import styled from "styled-components/native";
+import {
+  buttonVariants,
+  colors,
+  fontSizes,
+  fontWeights,
+  radius,
+  spacing,
+} from "../theme/theme";
+import { ButtonVariant, FlexDirection } from "../types";
+import { BaseCard } from "../ui/primitives";
 
 type VariantProp = { variant: ButtonVariant };
 type FlexDirectionProp = { flexDirection: FlexDirection };
@@ -27,7 +33,7 @@ export const Message = styled.Text`
 `;
 
 export const ButtonRow = styled.View<FlexDirectionProp>`
-  flex-direction: ${(p: FlexDirectionProp) => p.flexDirection};
+  flex-direction: ${(props: FlexDirectionProp) => props.flexDirection};
   gap: ${spacing.sm}px;
   margin-top: ${spacing.sm}px;
 `;
@@ -37,13 +43,14 @@ export const Button = styled.TouchableOpacity<VariantProp>`
   padding: 12px;
   border-radius: ${radius.md}px;
   align-items: center;
-  background-color: ${(p: VariantProp) => DIALOG_BUTTON_VARIANTS[p.variant].bg};
-  border-width: ${(p: VariantProp) => DIALOG_BUTTON_VARIANTS[p.variant].borderWidth}px;
-  border-color: ${(p: VariantProp) => DIALOG_BUTTON_VARIANTS[p.variant].border};
+  background-color: ${(props: VariantProp) => buttonVariants[props.variant].bg};
+  border-width: ${(props: VariantProp) =>
+    buttonVariants[props.variant].borderWidth}px;
+  border-color: ${(props: VariantProp) => buttonVariants[props.variant].border};
 `;
 
 export const ButtonText = styled.Text<VariantProp>`
   font-size: ${fontSizes.body}px;
   font-weight: ${fontWeights.semibold};
-  color: ${(p: VariantProp) => DIALOG_BUTTON_VARIANTS[p.variant].text};
+  color: ${(props: VariantProp) => buttonVariants[props.variant].text};
 `;

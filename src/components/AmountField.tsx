@@ -1,12 +1,15 @@
-import { SectionLabel } from '../ui/primitives';
+import { useState } from 'react';
+import { CurrencyRate } from '../types';
 import {
-  AmountInput, CurrencyButton, CurrencyButtonText, InputCard, ResultText,
+  AmountInput, CurrencyButton, CurrencyButtonText, InputCard, ResultText, SectionLabel,
 } from '../ui/primitives';
+import CurrencyPickerModal from './CurrencyPickerModal';
 
 type CommonProps = {
   label: string;
-  currencyCode: string;
-  onPickCurrency: () => void;
+  selected: CurrencyRate;
+  rates: CurrencyRate[];
+  onSelectCurrency: (rate: CurrencyRate) => void;
 };
 
 type Props =
@@ -21,6 +24,8 @@ type Props =
     });
 
 export default function AmountField(props: Props) {
+  const [pickerVisible, setPickerVisible] = useState(false);
+
   return (
     <>
       <SectionLabel>{props.label}</SectionLabel>
@@ -35,10 +40,17 @@ export default function AmountField(props: Props) {
         ) : (
           <ResultText numberOfLines={1}>{props.value || '—'}</ResultText>
         )}
-        <CurrencyButton onPress={props.onPickCurrency}>
-          <CurrencyButtonText>{props.currencyCode} ▾</CurrencyButtonText>
+        <CurrencyButton onPress={() => setPickerVisible(true)}>
+          <CurrencyButtonText>{props.selected.code} ▾</CurrencyButtonText>
         </CurrencyButton>
       </InputCard>
+      <CurrencyPickerModal
+        visible={pickerVisible}
+        rates={props.rates}
+        selected={props.selected}
+        onSelect={props.onSelectCurrency}
+        onClose={() => setPickerVisible(false)}
+      />
     </>
   );
 }

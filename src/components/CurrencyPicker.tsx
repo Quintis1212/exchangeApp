@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CurrencyRate } from "../types";
-import { Pill, Text } from "../ui/primitives";
+import { Button, Text } from "../ui/primitives";
 import CurrencyPickerModal from "./CurrencyPickerModal";
 
 type Props = {
@@ -22,12 +22,12 @@ export default function CurrencyPicker({
 
   return (
     <>
-      <Pill onPress={() => setVisible(true)}>
+      <Button onPress={() => setVisible(true)}>
         <Text>
           {prefix ? `${prefix}: ` : ""}
           {selected.code} ▾
         </Text>
-      </Pill>
+      </Button>
       <CurrencyPickerModal
         visible={visible}
         rates={rates}

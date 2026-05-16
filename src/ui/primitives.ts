@@ -172,7 +172,7 @@ export const PrimaryButtonText = styled.Text`
   font-size: ${fontSizes.bodyLg}px;
 `;
 
-export const Pill = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
   padding: 6px 12px;
   background-color: ${colors.surface};
   border-radius: ${radius.full}px;

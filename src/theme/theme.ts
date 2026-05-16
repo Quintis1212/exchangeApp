@@ -1,3 +1,5 @@
+import { ButtonVariant, DialogButtonStyle } from "../types";
+
 export const colors = {
   background: "#0f0f23",
   surface: "#1a1a3e",
@@ -15,7 +17,7 @@ export const colors = {
   chipActive: "#4fc3f7",
   chipActiveText: "#0f0f23",
   chipInactiveText: "#888899",
-} satisfies Record<string, string>;
+};
 
 export const spacing = {
   xs: 4,
@@ -25,13 +27,13 @@ export const spacing = {
   lg: 20,
   xl: 24,
   xxl: 32,
-} satisfies Record<string, number>;
+};
 
 export const radius = {
   sm: 8,
   md: 12,
   full: 20,
-} satisfies Record<string, number>;
+};
 
 export const fontSizes = {
   xs: 12,
@@ -42,10 +44,31 @@ export const fontSizes = {
   title: 17,
   titleLg: 18,
   heading: 26,
-} satisfies Record<string, number>;
+};
 
 export const fontWeights = {
   regular: "400",
   semibold: "600",
   bold: "700",
-} satisfies Record<string, string>;
+};
+
+export const buttonVariants: Record<ButtonVariant, DialogButtonStyle> = {
+  primary: {
+    bg: colors.primary,
+    border: "transparent",
+    borderWidth: 0,
+    text: colors.background,
+  },
+  secondary: {
+    bg: colors.background,
+    border: colors.border,
+    borderWidth: 1,
+    text: colors.textSecondary,
+  },
+  destructive: {
+    bg: colors.negativeTint,
+    border: colors.negative,
+    borderWidth: 1,
+    text: colors.negative,
+  },
+};
