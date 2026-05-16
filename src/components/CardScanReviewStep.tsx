@@ -1,8 +1,12 @@
-import { PrimaryButton, PrimaryButtonText } from '../ui/primitives';
+import { PrimaryButton, PrimaryButtonText } from "../ui/primitives";
+import { ParsedCard } from "../utils";
 import {
-  FieldLabel, Form, FormInput, SecondaryButton, SecondaryButtonText,
-} from './CardScanModal.styled';
-import { ParsedCard } from '../utils';
+  FieldLabel,
+  Form,
+  FormInput,
+  SecondaryButton,
+  SecondaryButtonText,
+} from "./CardScanModal.styled";
 
 type Props = {
   card: ParsedCard;
@@ -11,7 +15,12 @@ type Props = {
   onRescan: () => void;
 };
 
-export default function CardScanReviewStep({ card, onChange, onSave, onRescan }: Props) {
+export default function CardScanReviewStep({
+  card,
+  onChange,
+  onSave,
+  onRescan,
+}: Props) {
   const update = (field: keyof ParsedCard) => (value: string) =>
     onChange({ ...card, [field]: value });
 
@@ -20,7 +29,7 @@ export default function CardScanReviewStep({ card, onChange, onSave, onRescan }:
       <FieldLabel>Card Number</FieldLabel>
       <FormInput
         value={card.number}
-        onChangeText={update('number')}
+        onChangeText={update("number")}
         placeholder="0000 0000 0000 0000"
         keyboardType="numeric"
         maxLength={23}
@@ -29,15 +38,14 @@ export default function CardScanReviewStep({ card, onChange, onSave, onRescan }:
       <FieldLabel>Cardholder Name</FieldLabel>
       <FormInput
         value={card.name}
-        onChangeText={update('name')}
+        onChangeText={update("name")}
         placeholder="FULL NAME"
-        autoCapitalize="characters"
       />
 
       <FieldLabel>Expiry (MM/YY)</FieldLabel>
       <FormInput
         value={card.expiry}
-        onChangeText={update('expiry')}
+        onChangeText={update("expiry")}
         placeholder="MM/YY"
         keyboardType="numeric"
         maxLength={5}
