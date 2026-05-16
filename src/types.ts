@@ -44,6 +44,15 @@ export type DialogButtonStyle = {
   text: string;
 };
 
+export type Sign = 1 | -1 | 0;
+export type SignProp = { sign: Sign };
+
+export type ParsedCard = {
+  number: string;
+  expiry: string;
+  name: string;
+};
+
 export type TabParamList = {
   Rates: undefined;
   Exchange: undefined;
