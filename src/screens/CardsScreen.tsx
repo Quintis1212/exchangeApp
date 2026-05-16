@@ -4,17 +4,14 @@ import AppDialog from "../components/AppDialog";
 import CardItem from "../components/CardItem";
 import CardScanModal from "../components/CardScanModal";
 import CardsEmptyState from "../components/CardsEmptyState";
-import { useCards } from "../hooks/useCards";
+import { useAddCard, useCards, useRemoveCard } from "../stores/CardsStore";
 import { spacing } from "../theme/theme";
-import {
-  PrimaryButton,
-  PrimaryButtonText,
-  ScreenContainer,
-} from "../ui/primitives";
+import { ScreenContainer } from "../ui/primitives";
 
 export default function CardsScreen() {
-  const { cards, addCard, removeCard } = useCards();
-  const [scanVisible, setScanVisible] = useState(false);
+  const cards = useCards();
+  const addCard = useAddCard();
+  const removeCard = useRemoveCard();
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   const isEmpty = cards.length === 0;
@@ -31,12 +28,7 @@ export default function CardsScreen() {
         )}
       </ScrollView>
 
-      <PrimaryButton
-        onPress={() => setScanVisible(true)}
-        style={{ margin: spacing.base }}
-      >
-        <PrimaryButtonText>+ Scan Card</PrimaryButtonText>
-      </PrimaryButton>
+      <CardScanModal onSave={addCard} />
 
       <AppDialog
         visible={pendingDeleteId !== null}
@@ -51,12 +43,6 @@ export default function CardsScreen() {
           },
         ]}
         onClose={() => setPendingDeleteId(null)}
-      />
-
-      <CardScanModal
-        visible={scanVisible}
-        onSave={addCard}
-        onClose={() => setScanVisible(false)}
       />
     </ScreenContainer>
   );

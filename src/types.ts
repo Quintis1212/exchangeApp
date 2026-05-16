@@ -33,6 +33,21 @@ export type RateRow = {
   rateValue: string;
 };
 
-export type ButtonVariant = 'primary' | 'secondary' | 'destructive';
+export type ButtonVariant = "primary" | "secondary" | "destructive";
 
-export type FlexDirection = 'row' | 'column';
+export type FlexDirection = "row" | "column";
+
+export type DialogButtonStyle = {
+  bg: string;
+  border: string;
+  borderWidth: number;
+  text: string;
+};
+
+export type TabParamList = {
+  Rates: undefined;
+  Exchange: undefined;
+  History: undefined;
+  Cards: undefined;
+  Settings: undefined;
+};
