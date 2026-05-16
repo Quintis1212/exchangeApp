@@ -1,5 +1,5 @@
 import { PrimaryButton, PrimaryButtonText } from "../ui/primitives";
-import { ParsedCard } from "../utils";
+import { ParsedCard } from "../types";
 import {
   FieldLabel,
   Form,

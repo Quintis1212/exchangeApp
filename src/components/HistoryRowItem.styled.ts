@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
 import { colors, fontSizes, fontWeights, spacing } from "../theme/theme";
 import { BaseCard } from "../ui/primitives";
-import { colorForSign, SignProp } from "../utils";
+import { SignProp } from "../types";
+import { colorForSign } from "../utils";
 
 export const HistoryRow = styled(BaseCard)`
   flex-direction: row;

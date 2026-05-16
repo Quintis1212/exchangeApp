@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { CZK_ENTRY, convert, defaultCounterCurrency } from '../api/cnb';
+import { convert, defaultCounterCurrency } from '../api/cnb';
+import { CZK_ENTRY } from '../constants';
 import { CNBRates, CurrencyRate } from '../types';
 
 export function useExchange(data: CNBRates | undefined) {

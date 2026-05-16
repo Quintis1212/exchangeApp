@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useCallback, useMemo, ReactNode } from 'react';
 import { CurrencyRate } from '../types';
-import { CZK_ENTRY } from '../api/cnb';
-import { STORAGE_KEYS } from '../constants';
+import { CZK_ENTRY, STORAGE_KEYS } from '../constants';
 import { getJSON, setJSON } from '../storage';
 
 type BaseCurrencyCtx = {

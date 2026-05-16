@@ -1,7 +1,7 @@
 import { RangeKey } from '../hooks/useHistoryEntries';
 import { spacing } from '../theme/theme';
 import { Divider } from '../ui/primitives';
-import { Sign } from '../utils';
+import { Sign } from '../types';
 import HistoryChart from './HistoryChart';
 import HistorySummary from './HistorySummary';
 import RangeTabBar from './RangeTabBar';

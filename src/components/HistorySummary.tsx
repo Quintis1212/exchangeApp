@@ -4,7 +4,8 @@ import { spacing } from '../theme/theme';
 import {
   Badge, BadgeText, HeadingText, SecondaryText,
 } from '../ui/primitives';
-import { Sign, arrowForSign, bgForSign, colorForSign } from '../utils';
+import { Sign } from '../types';
+import { arrowForSign, bgForSign, colorForSign } from '../utils';
 
 type Props = {
   fromCode: string;
