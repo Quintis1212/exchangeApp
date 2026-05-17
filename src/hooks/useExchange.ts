@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { convert, defaultCounterCurrency } from '../api/cnb';
+import { convert, defaultCounterCurrency } from '../utils';
 import { CZK_ENTRY } from '../constants';
 import { CNBRates, CurrencyRate } from '../types';
 
