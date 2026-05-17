@@ -47,6 +47,13 @@ export type DialogButtonStyle = {
 export type Sign = 1 | -1 | 0;
 export type SignProp = { sign: Sign };
 
+export type RangeKey = "1W" | "1M" | "3M" | "6M" | "1Y";
+
+export type HistoryEntry = {
+  date: string;
+  rate: number | null;
+};
+
 export type ParsedCard = {
   number: string;
   expiry: string;

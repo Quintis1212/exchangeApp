@@ -1,4 +1,5 @@
-import { RANGE_KEYS, RangeKey } from "../hooks/useHistoryEntries";
+import { RANGE_KEYS } from "../constants";
+import { RangeKey } from "../types";
 import { RangeTab, RangeTabs, RangeTabText } from "./RangeTabBar.styled";
 
 type Props = {

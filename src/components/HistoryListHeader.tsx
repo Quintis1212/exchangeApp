@@ -1,6 +1,5 @@
-import { RangeKey } from "../hooks/useHistoryEntries";
 import { spacing } from "../theme/theme";
-import { Sign } from "../types";
+import { RangeKey, Sign } from "../types";
 import { Divider } from "../ui/primitives";
 import HistoryChart from "./HistoryChart";
 import HistorySummary from "./HistorySummary";

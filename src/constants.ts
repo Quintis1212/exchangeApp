@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { CurrencyRate, ParsedCard } from "./types";
+import { CurrencyRate, ParsedCard, RangeKey } from "./types";
 
 export const STORAGE_KEYS = {
   cards: "@exchangeapp/cards",
@@ -24,6 +24,16 @@ export const CNB_DAILY_URL =
 export const CNB_YEAR_URL = `https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/year.txt?year= `;
 
 export const CHART_PADDING_Y = 8;
+
+export const RANGE_KEYS: readonly RangeKey[] = ["1W", "1M", "3M", "6M", "1Y"];
+
+export const RANGES: Record<RangeKey, number> = {
+  "1W": 7,
+  "1M": 30,
+  "3M": 90,
+  "6M": 180,
+  "1Y": 365,
+};
 
 export const MONTHS = [
   "Jan",

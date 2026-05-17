@@ -1,4 +1,4 @@
-import { HistoryEntry } from '../hooks/useHistoryEntries';
+import { HistoryEntry } from '../types';
 import { SecondaryText } from '../ui/primitives';
 import { fmtDate, getSign } from '../utils';
 import { DateText, DeltaText, HistoryRow, RateValue } from './HistoryRowItem.styled';

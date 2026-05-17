@@ -1,10 +1,9 @@
 import { View } from 'react-native';
-import { RangeKey } from '../hooks/useHistoryEntries';
 import { spacing } from '../theme/theme';
 import {
   Badge, BadgeText, HeadingText, SecondaryText,
 } from '../ui/primitives';
-import { Sign } from '../types';
+import { RangeKey, Sign } from '../types';
 import { arrowForSign, bgForSign, colorForSign } from '../utils';
 
 type Props = {

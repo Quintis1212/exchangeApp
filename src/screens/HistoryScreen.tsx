@@ -5,14 +5,10 @@ import HistoryListHeader from "../components/HistoryListHeader";
 import HistoryRowItem from "../components/HistoryRowItem";
 import { useBase } from "../context/BaseCurrencyContext";
 import { useCNBRates } from "../hooks/useCNBQueries";
-import {
-  HistoryEntry,
-  RangeKey,
-  useHistoryEntries,
-} from "../hooks/useHistoryEntries";
+import { useHistoryEntries } from "../hooks/useHistoryEntries";
 import { useHistoryStats } from "../hooks/useHistoryStats";
 import { spacing } from "../theme/theme";
-import { CurrencyRate } from "../types";
+import { CurrencyRate, HistoryEntry, RangeKey } from "../types";
 import { ScreenContainer, SecondaryText, Toolbar } from "../ui/primitives";
 import { defaultCounterCurrency, ratesWithCZK } from "../utils";
 
