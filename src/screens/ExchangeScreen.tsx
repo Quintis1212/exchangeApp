@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { ratesWithCZK } from "../api/cnb";
+import { ratesWithCZK } from "../utils";
 import AmountField from "../components/AmountField";
 import AppDialog from "../components/AppDialog";
 import ExchangeRateCard from "../components/ExchangeRateCard";

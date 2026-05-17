@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FlatList, ListRenderItem } from "react-native";
-import { ratesWithCZK } from "../api/cnb";
+import { ratesWithCZK } from "../utils";
 import CurrencyPicker from "../components/CurrencyPicker";
 import RateListItem from "../components/RateListItem";
 import { useBase } from "../context/BaseCurrencyContext";

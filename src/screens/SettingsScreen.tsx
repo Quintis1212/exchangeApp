@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { ratesWithCZK } from "../api/cnb";
+import { ratesWithCZK } from "../utils";
 import CurrencyPicker from "../components/CurrencyPicker";
 import SettingsRow from "../components/SettingsRow";
 import SettingsSection from "../components/SettingsSection";
