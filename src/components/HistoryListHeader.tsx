@@ -1,10 +1,10 @@
-import { RangeKey } from '../hooks/useHistoryEntries';
-import { spacing } from '../theme/theme';
-import { Divider } from '../ui/primitives';
-import { Sign } from '../types';
-import HistoryChart from './HistoryChart';
-import HistorySummary from './HistorySummary';
-import RangeTabBar from './RangeTabBar';
+import { RangeKey } from "../hooks/useHistoryEntries";
+import { spacing } from "../theme/theme";
+import { Sign } from "../types";
+import { Divider } from "../ui/primitives";
+import HistoryChart from "./HistoryChart";
+import HistorySummary from "./HistorySummary";
+import RangeTabBar from "./RangeTabBar";
 
 type Props = {
   fromCode: string;
@@ -14,7 +14,6 @@ type Props = {
   periodSign: Sign;
   chartValues: number[];
   isLoading: boolean;
-  trendColor: string;
   range: RangeKey;
   onRangeChange: (range: RangeKey) => void;
 };
@@ -24,10 +23,9 @@ export default function HistoryListHeader({
   baseCode,
   latestRate,
   periodChangePercentage,
-  periodSign,
   chartValues,
   isLoading,
-  trendColor,
+  periodSign,
   range,
   onRangeChange,
 }: Props) {
@@ -41,7 +39,11 @@ export default function HistoryListHeader({
         periodSign={periodSign}
         range={range}
       />
-      <HistoryChart values={chartValues} isLoading={isLoading} color={trendColor} />
+      <HistoryChart
+        values={chartValues}
+        isLoading={isLoading}
+        periodSign={periodSign}
+      />
       <RangeTabBar value={range} onChange={onRangeChange} />
       <Divider style={{ marginBottom: spacing.sm }} />
     </>
