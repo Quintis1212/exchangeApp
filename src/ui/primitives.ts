@@ -60,6 +60,10 @@ export const Divider = styled.View`
   margin: 0 ${spacing.base}px;
 `;
 
+export const VSpacer = styled.View`
+  height: ${spacing.base}px;
+`;
+
 export const BaseCard = styled.View`
   background-color: ${colors.surface};
   border-radius: ${radius.md}px;

@@ -1,5 +1,5 @@
-import { PrimaryButton, PrimaryButtonText } from "../ui/primitives";
 import { ParsedCard } from "../types";
+import { PrimaryButton, PrimaryButtonText, VSpacer } from "../ui/primitives";
 import {
   FieldLabel,
   Form,
@@ -50,7 +50,7 @@ export default function CardScanReviewStep({
         keyboardType="numeric"
         maxLength={5}
       />
-
+      <VSpacer />
       <PrimaryButton onPress={onSave}>
         <PrimaryButtonText>Save Card</PrimaryButtonText>
       </PrimaryButton>

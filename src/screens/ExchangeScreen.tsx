@@ -1,5 +1,4 @@
 import { Platform } from "react-native";
-import { ratesWithCZK } from "../utils";
 import AmountField from "../components/AmountField";
 import AppDialog from "../components/AppDialog";
 import ExchangeRateCard from "../components/ExchangeRateCard";
@@ -18,7 +17,9 @@ import {
   ScreenContent,
   SwapButton,
   SwapIcon,
+  VSpacer,
 } from "../ui/primitives";
+import { ratesWithCZK } from "../utils";
 
 export default function ExchangeScreen() {
   const { data, isLoading, isError } = useCNBRates();
@@ -57,7 +58,7 @@ export default function ExchangeScreen() {
           rates={allRates}
           onSelectCurrency={setFromCurrency}
         />
-
+        <VSpacer />
         <SwapButton onPress={swap} activeOpacity={0.7}>
           <SwapIcon>⇅</SwapIcon>
         </SwapButton>
