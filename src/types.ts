@@ -31,6 +31,10 @@ export type CardDraft = Omit<SavedCard, "id" | "savedAt">;
 
 export type CardScanStep = "camera" | "review";
 
+export type PhotoOutput = ReturnType<
+  typeof import("react-native-vision-camera").usePhotoOutput
+>;
+
 export type RateRow = {
   key: string;
   code: string;

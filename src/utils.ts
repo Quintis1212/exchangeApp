@@ -1,3 +1,4 @@
+import TextRecognition from "@react-native-ml-kit/text-recognition";
 import {
   CARD_NUMBER_RE,
   CZK_ENTRY,
@@ -13,6 +14,7 @@ import {
   CurrencyRate,
   HistoricalRate,
   ParsedCard,
+  PhotoOutput,
   RateRow,
   Sign,
   YearRates,
@@ -41,10 +43,13 @@ export const parseCNBText = (text: string): CNBRates => {
 
 export const parseCNBYearText = (text: string, year: number): YearRates => {
   const [header, ...dataLines] = text.trim().split("\n");
-  const cols = header.split("|").slice(1).map((h) => ({
-    code: h.trim().split(" ")[1],
-    amount: parseInt(h, 10),
-  }));
+  const cols = header
+    .split("|")
+    .slice(1)
+    .map((h) => ({
+      code: h.trim().split(" ")[1],
+      amount: parseInt(h, 10),
+    }));
   const ratesByDate: Record<string, HistoricalRate[]> = {};
   const dates: string[] = [];
   for (const line of dataLines) {
@@ -140,6 +145,20 @@ export const toCardDraft = (card: ParsedCard): CardDraft => ({
 
 export const isCardValid = (card: ParsedCard): boolean =>
   Boolean(card.number.trim() && card.expiry.trim() && card.name.trim());
+
+export const mergeCard = (prev: ParsedCard, next: ParsedCard): ParsedCard => ({
+  number: next.number || prev.number,
+  expiry: next.expiry || prev.expiry,
+  name: next.name || prev.name,
+});
+
+export const scanFrame = async (
+  photoOutput: PhotoOutput,
+): Promise<ParsedCard> => {
+  const file = await photoOutput.capturePhotoToFile({ flashMode: "off" }, {});
+  const result = await TextRecognition.recognize(`file://${file.filePath}`);
+  return parseCardText(result.blocks.map((block) => block.text).join("\n"));
+};
 
 export const maskCardNumber = (num: string) =>
   `**** **** **** ${num.slice(-4)}`;
