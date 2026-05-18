@@ -58,16 +58,6 @@ export const CardFrame = styled.View`
   margin-bottom: ${spacing.base}px;
 `;
 
-export const CaptureButton = styled.TouchableOpacity`
-  position: absolute;
-  bottom: ${spacing.xl}px;
-  align-self: center;
-  background-color: ${colors.primary};
-  border-radius: ${radius.md}px;
-  padding: 14px ${spacing.xl}px;
-  align-items: center;
-`;
-
 export const SecondaryButton = styled.TouchableOpacity`
   border-radius: ${radius.md}px;
   border-width: 1px;
