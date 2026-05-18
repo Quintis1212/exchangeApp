@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ScrollView } from "react-native";
 import AppDialog from "../components/AppDialog";
 import CardItem from "../components/CardItem";
-import CardScanModal from "../components/CardScanModal";
 import CardsEmptyState from "../components/CardsEmptyState";
+import ScanCardButton from "../components/ScanCardButton";
 import { useAddCard, useCards, useRemoveCard } from "../stores/CardsStore";
 import { spacing } from "../theme/theme";
 import { ScreenContainer } from "../ui/primitives";
@@ -28,7 +28,7 @@ export default function CardsScreen() {
         )}
       </ScrollView>
 
-      <CardScanModal onSave={addCard} />
+      <ScanCardButton onSave={addCard} />
 
       <AppDialog
         visible={pendingDeleteId !== null}

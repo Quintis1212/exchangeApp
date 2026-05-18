@@ -2,19 +2,31 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { STORAGE_KEYS } from "../constants";
 import { mmkvStorage } from "../storage";
-import { SavedCard } from "../types";
+import { CardDraft, SavedCard } from "../types";
+import { newId } from "../utils";
 
 type CardsState = {
   cards: readonly SavedCard[];
-  addCard: (card: SavedCard) => void;
+  addCard: (draft: CardDraft) => boolean;
   removeCard: (id: string) => void;
 };
 
 const useCardsStore = create<CardsState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cards: [],
-      addCard: (card) => set((state) => ({ cards: [card, ...state.cards] })),
+      addCard: (draft) => {
+        if (get().cards.some((card) => card.number === draft.number)) {
+          return false;
+        }
+        set((state) => ({
+          cards: [
+            { ...draft, id: newId(), savedAt: Date.now() },
+            ...state.cards,
+          ],
+        }));
+        return true;
+      },
       removeCard: (id) =>
         set((state) => ({
           cards: state.cards.filter((card) => card.id !== id),

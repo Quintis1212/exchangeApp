@@ -134,6 +134,8 @@ export const parseCardText = (text: string): ParsedCard => ({
 export const maskCardNumber = (num: string) =>
   `**** **** **** ${num.slice(-4)}`;
 
+export const newId = (): string => crypto.randomUUID();
+
 export const formatSavedDate = (timestamp: number) =>
   new Date(timestamp).toLocaleDateString("en-GB", {
     day: "2-digit",

@@ -27,6 +27,8 @@ export type SavedCard = {
   savedAt: number;
 };
 
+export type CardDraft = Omit<SavedCard, "id" | "savedAt">;
+
 export type RateRow = {
   key: string;
   code: string;
