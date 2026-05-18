@@ -22,11 +22,13 @@ export const useHistoryEntries = (
     loadingThis || loadingLast || (range === "1Y" && loadingTwoYears);
 
   const entriesAsc = useMemo<HistoryEntry[]>(() => {
-    const allDates = [
-      ...(twoYearsAgo?.dates ?? []),
-      ...(lastYear?.dates ?? []),
-      ...(thisYear?.dates ?? []),
-    ];
+    const allDates = Array.from(
+      new Set([
+        ...(twoYearsAgo?.dates ?? []),
+        ...(lastYear?.dates ?? []),
+        ...(thisYear?.dates ?? []),
+      ]),
+    );
     const ratesByDate = {
       ...(twoYearsAgo?.ratesByDate ?? {}),
       ...(lastYear?.ratesByDate ?? {}),
