@@ -1,4 +1,5 @@
 import TextRecognition from "@react-native-ml-kit/text-recognition";
+import { randomUUID } from "expo-crypto";
 import {
   CARD_NUMBER_RE,
   CZK_ENTRY,
@@ -163,7 +164,7 @@ export const scanFrame = async (
 export const maskCardNumber = (num: string) =>
   `**** **** **** ${num.slice(-4)}`;
 
-export const newId = (): string => crypto.randomUUID();
+export const newId = (): string => randomUUID();
 
 export const formatSavedDate = (timestamp: number) =>
   new Date(timestamp).toLocaleDateString("en-GB", {
