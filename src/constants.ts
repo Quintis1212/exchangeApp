@@ -25,6 +25,9 @@ export const CNB_YEAR_URL = `https://www.cnb.cz/en/financial-markets/foreign-exc
 
 export const CHART_PADDING_Y = 8;
 
+export const SCAN_RETRY_DELAY_MS = 300;
+export const MAX_CONSECUTIVE_ERRORS = 5;
+
 export const RANGE_KEYS: readonly RangeKey[] = ["1W", "1M", "3M", "6M", "1Y"];
 
 export const RANGES: Record<RangeKey, number> = {

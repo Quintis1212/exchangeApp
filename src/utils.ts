@@ -8,6 +8,7 @@ import {
 } from "./constants";
 import { colors } from "./theme/theme";
 import {
+  CardDraft,
   CNBRates,
   CurrencyRate,
   HistoricalRate,
@@ -130,6 +131,15 @@ export const parseCardText = (text: string): ParsedCard => ({
   expiry: text.match(EXPIRY_RE)?.[0] ?? "",
   name: text.match(NAME_RE)?.[0] ?? "",
 });
+
+export const toCardDraft = (card: ParsedCard): CardDraft => ({
+  number: card.number.replace(/\s/g, ""),
+  name: card.name.trim(),
+  expiry: card.expiry.trim(),
+});
+
+export const isCardValid = (card: ParsedCard): boolean =>
+  Boolean(card.number.trim() && card.expiry.trim() && card.name.trim());
 
 export const maskCardNumber = (num: string) =>
   `**** **** **** ${num.slice(-4)}`;

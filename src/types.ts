@@ -29,6 +29,8 @@ export type SavedCard = {
 
 export type CardDraft = Omit<SavedCard, "id" | "savedAt">;
 
+export type CardScanStep = "camera" | "review";
+
 export type RateRow = {
   key: string;
   code: string;
