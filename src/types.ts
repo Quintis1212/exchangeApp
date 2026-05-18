@@ -6,6 +6,8 @@ export type CurrencyRate = {
   rate: number;
 };
 
+export type HistoricalRate = Pick<CurrencyRate, "code" | "amount" | "rate">;
+
 export type CNBRates = {
   date: string;
   rates: CurrencyRate[];
@@ -14,7 +16,7 @@ export type CNBRates = {
 export type YearRates = {
   year: number;
   dates: string[];
-  ratesByDate: Record<string, CurrencyRate[]>;
+  ratesByDate: Record<string, HistoricalRate[]>;
 };
 
 export type SavedCard = {

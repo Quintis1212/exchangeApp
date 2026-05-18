@@ -1,6 +1,7 @@
 import { useMemo } from "react";
+import { CZK_ENTRY } from "../constants";
 import { CNBRates, CurrencyRate, RateRow } from "../types";
-import { czkRowAgainst, toRow, toRowAgainst } from "../utils";
+import { toRow, toRowAgainst } from "../utils";
 
 const matchesQuery = (row: RateRow, query: string) =>
   row.code.toLowerCase().includes(query) ||
@@ -14,9 +15,10 @@ export function useRatesRows(
   const rows = useMemo<RateRow[]>(() => {
     if (!data) return [];
     if (base.code === "CZK") return data.rates.map(toRow);
+    const against = toRowAgainst(base);
     return [
-      czkRowAgainst(base),
-      ...data.rates.filter((r) => r.code !== base.code).map(toRowAgainst(base)),
+      against(CZK_ENTRY),
+      ...data.rates.filter((r) => r.code !== base.code).map(against),
     ];
   }, [data, base]);
 
